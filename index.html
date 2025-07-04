@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<head>
+<html lang="pt-BR">
+    <link rel="icon" href="assets/+.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel - Cuida+</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx5-SYTudgvqg8VngAGLhLk76Agi--uIU&libraries=places"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="assets/Logocuida.svg" alt="Cuida+" class="logo-image">
+        </div>
+        <nav class="nav-menu">
+            <ul class="main-menu">
+                <li class="active"><a href="#"><i class="fas fa-home"></i><span>Inicio</span></a></li>
+                <li><a href="#"><i class="fas fa-dumbbell"></i><span>Exercício</span></a></li>
+                <li><a href="#"><i class="fas fa-utensils"></i><span>Alimentação</span></a></li>
+                <li><a href="#"><i class="fas fa-chart-simple"></i><span>Meus Dados</span></a></li>
+                <li><a href="#"><i class="fas fa-history"></i><span>Histórico</span></a></li>
+            </ul>
+            <ul class="bottom-menu">
+                <li><a href="saude.html"><i class="fa-solid fa-clipboard-user"></i><span>Profissional</span></a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i><span>Sair</span></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <header class="welcome-header">
+            <h1>Seu Painel</h1>
+            <div class="welcome-line">
+                <p class="welcome-text">Bem-vindo de Volta, João.</p>
+                <p class="welcome-text">Caso seja Profissional, temos uma aba para você!</p>
+                <div class="caps-container">
+                    <div class="caps-number-wrapper">
+                        <h3 class="caps-text">32</h3>
+                        <a href="https://conecta.recife.pe.gov.br/servico/949" class="caps-link">Capibas?</a>
+                    </div>
+                    <img src="assets/capiba.svg" alt="Capiba" class="caps-icon">
+                </div>
+            </div>
+        </header>
+        
+        <div class="widgets-container unequal-width">
+            <div class="widget-academia wide-widget">
+                <div class="widget-image-overlay clickable-overlay" style="background-image: url('assets/hvacad.png');"></div>
+                <div class="widget-header-academia">
+                    <h3>Academia</h3>
+                    <img src="assets/ExercicioLogo.svg">
+                </div>
+                <p>Academias mais próximas de você!</p>
+                <div id="map" style="height: 250px; width: 100%; border-radius: 8px; margin-top: 10px;"></div>
+            </div>
+            
+            <div class="widget" id="alimentacao-widget">
+                <div class="widget-image-overlay clickable-overlay" style="background-image: url('assets/hvalimento.png');"></div>
+                <div class="widget-header">
+                    <h3>Alimentação</h3>
+                    <img src="assets/FoodLogo.svg" alt="Ícone de alimentação">
+                </div>
+                <p>Regule sua alimentação</p><br>
+                <h3>Meta Diária:</h3>
+                <p><span id="consumoAtual">0</span> kcal de <span id="metaCalorica">1800</span> kcal</p>
+                <div class="progress-bar">
+                    <div class="progress" id="barraProgresso" style="width: 0%;"></div>
+                </div>
+                <p class="percentage" id="porcentagemProgresso">0%</p>
+                <div style="margin-top: 15px;">
+                    <input type="number" id="inputCalorias" placeholder="Adicionar calorias (kcal)" style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 8px;">
+                    <button id="btnAdicionarCalorias" style="width: 100%; padding: 10px; background-color: #002EC4; color: white; border: none; border-radius: 5px;">Adicionar</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="carrossel-container">
+            <h1 class="section-title">Informações Mais Importantes Para Você</h1><br>
+            <div class="carrossel">
+                <!-- Card 1 -->
+                <div class="carrossel-card" data-news="1">
+                    <div class="card-image-container">
+                        <img src="assets/noticia1.png" alt="Cálculo de IMC" class="card-image">
+                    </div>
+                </div>
+            
+                <div class="carrossel-card" data-news="2">
+                    <div class="card-image-container">
+                        <img src="assets/noticia2.png" alt="Exercício Físico" class="card-image">
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="carrossel-card" data-news="3">
+                    <div class="card-image-container">
+                        <img src="assets/noticia3.png" alt="Benefícios do abacate" class="card-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Modal de Notícias -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-container">
+            <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+            <div class="modal-content" id="modalContent">
+                <!-- Conteúdo será preenchido dinamicamente via JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chatbox -->
+    <div class="chatbox-wrapper">
+        <div class="chatbox-toggle">
+            <i class='bx bx-message-dots'></i>
+        </div>
+        <div class="chatbox-message-wrapper">
+            <div class="chatbox-message-header">
+                <div class="chatbox-message-profile">
+                    <img src="assets/cuidinho.jpg" alt="" class="chatbox-message-image">
+                    <div>
+                        <h4 class="chatbox-message-name">Cuidinho</h4>
+                        <p class="chatbox-message-status">Online</p>
+                    </div>
+                </div>
+                <div class="chatbox-message-dropdown">
+                    <i class='bx bx-dots-vertical-rounded chatbox-message-dropdown-toggle'></i>
+                    <ul class="chatbox-message-dropdown-menu">
+                        <li>
+                            <a href="#">Pesquisar</a>
+                        </li>
+                        <li>
+                            <a href="#">Reportar erros</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="chatbox-message-content">
+                <h4 class="chatbox-message-no-message">Você ainda não enviou nada!</h4>
+            </div>
+            <div class="chatbox-message-bottom">
+                <form action="#" class="chatbox-message-form">
+                    <textarea rows="1" placeholder="Digite..." class="chatbox-message-input"></textarea>
+                    <button type="submit" class="chatbox-message-submit"><i class='bx bx-send' ></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/alimentacao.js"></script>
+    <script src="js/maps.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/modal.js"></script>
+</body>
+</html>

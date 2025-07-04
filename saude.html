@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cuida+</title>
+        <link rel="icon" href="">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/saude.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AAAAA--uIU&libraries=places"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="assets/Logocuida.svg" alt="Cuida+" class="logo-image">
+            <img src="assets/Profissional.svg" alt="Profissional" class="logo-profissional">
+        </div> 
+        <nav class="nav-menu">
+            <ul class="main-menu">
+                <li class="active"><a href="#"><i class="fas fa-home"></i><span>Inicio</span></a></li>
+                <li><a href="#"><i class="fas fa-chart-simple"></i><span>Dados</span></a></li>
+                <li><a href="#"><i class="fa-solid fa-clock-rotate-left"></i><span>Histórico de Pacientes</span></a></li>
+                <li><a href="#"><i class="fa-solid fa-map-location-dot"></i><span>Mapeamento</span></a></li>
+            </ul>
+            <ul class="bottom-menu">
+                <li><a href="index.html"><i class="fa-solid fa-heart-pulse"></i><span>Paciente</span></a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i><span>Sair</span></a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <header class="welcome-header">
+            <h1>Seu Painel Profissional</h1>
+            <p class="welcome-text">Bem-vindo de Volta, Robson.</p>
+        </header>
+        <div class="widget-principal">
+            <div class="filtro-container">
+                <select class="filtro-toggle">                       
+                    <option value="alerta" class="filtro-opcao alerta"><span class="ponto hipertensos"></span> Exibir Filtros <i class="fa-solid fa-chevron-down"></i></option>
+                    <option value="alerta" class="filtro-opcao alerta"><span class="ponto hipertensos"></span> 🔴 Em Alerta <i class="fa-solid fa-chevron-down"></i></option>
+                    <option value="atencao" class="filtro-opcao atencao"><span class="ponto amarelo"></span> 🟡 Em Atenção <i class="fa-solid fa-chevron-down"></i></option>
+                    <option value="bom" class="filtro-opcao bom"><span class="ponto verde"></span> 🟢 Em Estabilidade <i class="fa-solid fa-chevron-down"></i></option>
+                </select>
+                <div class="filtro-container">
+                    <select class="filtro-distritos">                       
+                            <option value="alerta" class="filtro-opcao alerta"><span class="ponto hipertensos"></span> Distritos Sanitários <i class="fa-solid fa-chevron-down"></i></option>
+                            <option value="alerta" class="filtro-opcao alerta"><span class="ponto hipertensos"></span> Distrito I <i class="fa-solid fa-chevron-down"></i></option>
+                            <option value="atencao" class="filtro-opcao atencao"><span class="ponto amarelo"></span> Distrito II <i class="fa-solid fa-chevron-down"></i></option>
+                            <option value="bom" class="filtro-opcao bom"><span class="ponto verde"></span> Distrito III <i class="fa-solid fa-chevron-down"></i></option>
+                            <option value="bom" class="filtro-opcao bom"><span class="ponto verde"></span> Distrito IV <i class="fa-solid fa-chevron-down"></i></option>
+                    </select>
+                    
+                </div>
+                <div class="filtro-container">
+                    <select class="filtro-ruas">                       
+                            <option value="alerta" class="filtro-opcao alerta"><span class="ponto hipertensos"></span> Conjunto de Ruas <i class="fa-solid fa-chevron-down"></i></option>
+                            <option value="alerta" class="filtro-opcao alerta"><span class="ponto hipertensos"></span> Rua Mário Domingues <i class="fa-solid fa-chevron-down"></i></option>
+                            <option value="atencao" class="filtro-opcao atencao"><span class="ponto amarelo"></span> Rua Alfena <i class="fa-solid fa-chevron-down"></i></option>
+                            <option value="bom" class="filtro-opcao bom"><span class="ponto verde"></span> Rua Alice Milet Morais <i class="fa-solid fa-chevron-down"></i></option>
+                            <option value="bom" class="filtro-opcao bom"><span class="ponto verde"></span> Rua Vila Nova <i class="fa-solid fa-chevron-down"></i></option>
+                    </select>
+                    
+                </div>
+            </div>
+                
+                <div class="widgets-container">
+                    <div class="widgetdados">
+                        <div class="grafico-legenda">
+                            <h2>Censo do Distrito I</h2>
+                            <h5>[SANTO AMARO, BOA VISTA E CABANGA] </h5>
+                            <ul class="legenda">
+                                <li><span class="ponto hipertensos"></span> Hipertensos</li>
+                                <li><span class="ponto sedentarios"></span> Sedentários</li>
+                                <li><span class="ponto alcoolistas"></span> Alcoólistas</li>
+                                <li><span class="ponto diabeticos"></span> Diabéticos</li>
+                                
+                            </ul>
+                            <div>
+                                <canvas id="graficoPizza" width="160px" height="160px"></canvas>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="widgetdados widget-barras">
+                        <div class="grafico-legenda">
+                            <h3>Censo de População de Risco no Distrito I</h3>
+                            <h5>[SANTO AMARO, BOA VISTA E CABANGA] </h5>
+                            <!-- <button type="button" id="botaoOcultar">Ocultar Dados</button> -->
+                            
+                            <div class="graficoBar">
+                                <canvas id="graficoIMC" width="550" height="280" class="graficoBar"></canvas>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                        
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>    
+        </main>
+    
+
+    <div class="chatbox-wrapper">
+		<div class="chatbox-toggle">
+			<i class='bx bx-message-dots'></i>
+		</div>
+		<div class="chatbox-message-wrapper">
+			<div class="chatbox-message-header">
+				<div class="chatbox-message-profile">
+					<img src="assets/cuidinho.jpg" alt="" class="chatbox-message-image">
+					<div>
+						<h4 class="chatbox-message-name">Cuidinho</h4>
+						<p class="chatbox-message-status">Online</p>
+					</div>
+				</div>
+				<div class="chatbox-message-dropdown">
+					<i class='bx bx-dots-vertical-rounded chatbox-message-dropdown-toggle'></i>
+					<ul class="chatbox-message-dropdown-menu">
+						<li>
+							<a href="#">Pesquisar</a>
+						</li>
+						<li>
+							<a href="#">Reportar erros</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="chatbox-message-content">
+				<h4 class="chatbox-message-no-message">Você ainda não enviou nada!</h4>
+				<!-- <div class="chatbox-message-item sent">
+					<span class="chatbox-message-item-text">
+						Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Quod, fugiat?
+					</span>
+					<span class="chatbox-message-item-time">08:30</span>
+				</div>
+				<div class="chatbox-message-item received">
+					<span class="chatbox-message-item-text">
+						Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Quod, fugiat?
+					</span>
+					<span class="chatbox-message-item-time">08:30</span>
+				</div> -->
+			</div>
+			<div class="chatbox-message-bottom">
+				<form action="#" class="chatbox-message-form">
+					<textarea rows="1" placeholder="Digite..." class="chatbox-message-input"></textarea>
+					<button type="submit" class="chatbox-message-submit"><i class='bx bx-send' ></i></button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/graficos.js"></script>
+    <script src="js/maps.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
